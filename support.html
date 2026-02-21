@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Support page for Skyris Horizon by Jonas Huber." />
+  <meta name="theme-color" content="#07131f" />
+  <title>Support | Skyris Horizon</title>
+  <style>
+    :root {
+      --bg: #050912;
+      --bg2: #07131f;
+      --card: rgba(255,255,255,0.07);
+      --card-border: rgba(255,255,255,0.14);
+      --text: #eef4ff;
+      --muted: #b9c7df;
+      --accent: #67e8f9;
+      --accent2: #818cf8;
+      --shadow: 0 24px 60px rgba(0,0,0,0.45);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(700px 400px at 8% 0%, rgba(103,232,249,0.15), transparent 55%),
+        radial-gradient(700px 400px at 100% 0%, rgba(129,140,248,0.16), transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      min-height: 100vh;
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,0.7), transparent 80%);
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 18px 0 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 8px 24px rgba(103,232,249,0.3);
+      position: relative;
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      transition: .2s ease;
+    }
+    .nav a:hover, .nav a.active {
+      color: var(--text);
+      border-color: rgba(103,232,249,0.4);
+      background: rgba(103,232,249,0.1);
+    }
+
+    .hero {
+      border-radius: 28px;
+      border: 1px solid var(--card-border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 28px;
+      background: conic-gradient(from 140deg, rgba(103,232,249,0.2), rgba(129,140,248,0.12), transparent, rgba(103,232,249,0.18));
+      filter: blur(28px);
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .chips {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .contact-card {
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .contact-card h3 {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .field {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 10px;
+    }
+    .field:first-of-type { border-top: none; padding-top: 0; }
+    .field b {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+    .field span {
+      color: var(--muted);
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .card ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    .mail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(103,232,249,0.35);
+      background: rgba(103,232,249,0.1);
+    }
+    .mail-link:hover { background: rgba(103,232,249,0.14); }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content, .layout {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content, .card { padding: 16px; }
+      .nav a { font-size: 13px; padding: 7px 10px; }
+      .hero h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="topbar">
+      <a class="brand" href="marketing.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Skyris Horizon</span>
+      </a>
+      <nav class="nav" aria-label="Site navigation">
+        <a href="marketing.html">Marketing</a>
+        <a href="support.html" class="active">Support</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="support-title">
+      <div class="hero-content">
+        <div>
+          <h1 id="support-title">Support</h1>
+          <p>
+            Need help with <strong>Skyris Horizon</strong>? This page provides direct support contact details and basic guidance for users and App Store reviewers.
+          </p>
+          <div class="chips">
+            <span class="chip">Fast contact</span>
+            <span class="chip">Developer transparency</span>
+            <span class="chip">App Store ready</span>
+            <span class="chip">User-friendly support</span>
+          </div>
+        </div>
+
+        <aside class="contact-card" aria-label="Support contact">
+          <h3>Support Contact</h3>
+          <div class="field">
+            <b>Developer</b>
+            <span>Jonas Huber</span>
+          </div>
+          <div class="field">
+            <b>App</b>
+            <span>Skyris Horizon</span>
+          </div>
+          <div class="field">
+            <b>Email</b>
+            <span>jonashuber61@icloud.com</span>
+          </div>
+          <div class="field">
+            <b>Channel</b>
+            <span>Email support</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main class="layout">
+      <section class="card">
+        <h2>How to Get Help</h2>
+        <p>
+          If you have any questions, encounter issues, or would like to share feedback, please contact the developer by email.
+        </p>
+        <a class="mail-link" href="mailto:jonashuber61@icloud.com?subject=Skyris%20Horizon%20Support">
+          Contact Support
+        </a>
+      </section>
+
+      <section class="card">
+        <h2>Support Topics</h2>
+        <ul>
+          <li>General app usage questions</li>
+          <li>Bug reports and unexpected behavior</li>
+          <li>Feature suggestions and feedback</li>
+          <li>App Store review communication transparency</li>
+        </ul>
+      </section>
+
+      <section class="card wide">
+        <h2>Developer Note</h2>
+        <p>
+          Skyris Horizon is developed by <strong>Jonas Huber</strong>. I aim to provide a clear and honest experience for users and moderators by keeping support details visible and easy to access.
+        </p>
+        <p>
+          Every message and feedback helps improve the app. Thank you for your patience and support.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2026 Skyris Horizon — Support Page
+    </footer>
+  </div>
+</body>
+</html>

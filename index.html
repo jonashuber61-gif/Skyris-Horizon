@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Marketing page for Skyris Horizon by Jonas Huber. Transparent information for users and App Store reviewers." />
+  <meta name="theme-color" content="#090b18" />
+  <title>Skyris Horizon | Marketing</title>
+  <style>
+    :root {
+      --bg: #090b18;
+      --bg2: #090f22;
+      --text: #f3f7ff;
+      --muted: #bcc9e2;
+      --accent: #60a5fa;
+      --accent2: #c084fc;
+      --accent3: #22d3ee;
+      --card: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 24px 70px rgba(0,0,0,0.45);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(800px 500px at 8% -10%, rgba(96,165,250,0.18), transparent 60%),
+        radial-gradient(900px 500px at 90% -5%, rgba(192,132,252,0.14), transparent 60%),
+        radial-gradient(700px 400px at 50% 100%, rgba(34,211,238,0.08), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(50px);
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb.one { width: 220px; height: 220px; background: var(--accent); top: 8%; left: -40px; }
+    .orb.two { width: 280px; height: 280px; background: var(--accent2); top: 12%; right: -60px; }
+    .orb.three { width: 240px; height: 240px; background: var(--accent3); bottom: 6%; left: 35%; }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: 18px 0 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      position: relative;
+      background: linear-gradient(135deg, rgba(96,165,250,0.95), rgba(192,132,252,0.95));
+      box-shadow: 0 8px 30px rgba(96,165,250,0.28);
+      overflow: hidden;
+    }
+    .icon::before,
+    .icon::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+    }
+    .icon::before { width: 22px; height: 2px; top: 11px; left: 7px; transform: rotate(28deg); }
+    .icon::after  { width: 18px; height: 2px; top: 20px; left: 10px; transform: rotate(-18deg); }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      padding: 8px 12px;
+      transition: .2s ease;
+    }
+    .nav a:hover, .nav a.active {
+      color: var(--text);
+      border-color: rgba(96,165,250,0.35);
+      background: rgba(96,165,250,0.12);
+    }
+
+    .hero {
+      position: relative;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        rgba(255,255,255,0.02);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-wrap {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: var(--muted);
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent3), var(--accent));
+      box-shadow: 0 0 0 4px rgba(34,211,238,0.12);
+    }
+
+    .hero h1 {
+      margin: 12px 0 0;
+      font-size: clamp(30px, 4.3vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+      max-width: 66ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      transition: .2s ease;
+    }
+    .btn.primary {
+      border-color: rgba(96,165,250,0.4);
+      background: linear-gradient(180deg, rgba(96,165,250,0.18), rgba(96,165,250,0.08));
+      box-shadow: 0 8px 24px rgba(96,165,250,0.2);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .panel {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .panel h3 {
+      margin: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent3);
+    }
+    .row {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 10px;
+    }
+    .row:first-of-type { border-top: none; padding-top: 0; }
+    .row b {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .row span {
+      color: var(--muted);
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .section-grid {
+      margin-top: 18px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .card ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .step .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .value-banner {
+      margin-top: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(34,211,238,0.25);
+      background: linear-gradient(180deg, rgba(34,211,238,0.08), rgba(34,211,238,0.03));
+      padding: 12px;
+      color: #d8fbff;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 950px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+      }
+      .span-7, .span-5, .span-6 {
+        grid-column: span 12;
+      }
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-wrap, .card { padding: 16px; }
+      .hero h1 { font-size: 27px; }
+      .btn { width: 100%; text-align: center; }
+      .nav a { font-size: 13px; padding: 7px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb one" aria-hidden="true"></div>
+  <div class="orb two" aria-hidden="true"></div>
+  <div class="orb three" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="topbar">
+      <a class="brand" href="marketing.html" aria-label="Skyris Horizon Marketing Page">
+        <span class="icon" aria-hidden="true"></span>
+        <span>Skyris Horizon</span>
+      </a>
+
+      <nav class="nav" aria-label="Site navigation">
+        <a href="marketing.html" class="active">Marketing</a>
+        <a href="support.html">Support</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="marketing-title">
+      <div class="hero-wrap">
+        <div>
+          <div class="hero-badge">
+            <span class="dot" aria-hidden="true"></span>
+            Transparent developer page for users & App Store reviewers
+          </div>
+
+          <h1 id="marketing-title">Skyris Horizon</h1>
+          <p>
+            Skyris Horizon is an app created by <strong>Jonas Huber</strong>. This page is designed to provide a clear and open overview of the developer and the project for both users and App Store Connect reviewers.
+          </p>
+          <p>
+            I am a beginner developer and I am putting real effort into improving this app. My goal is to create useful value through thoughtful development, continuous updates, and honest communication.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="support.html">Support Page</a>
+            <a class="btn" href="privacy-policy.html">Privacy Policy</a>
+            <a class="btn" href="mailto:jonashuber61@icloud.com?subject=Skyris%20Horizon">Contact Developer</a>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="App and developer facts">
+          <h3>Project Facts</h3>
+          <div class="row">
+            <b>App Name</b>
+            <span>Skyris Horizon</span>
+          </div>
+          <div class="row">
+            <b>Developer</b>
+            <span>Jonas Huber</span>
+          </div>
+          <div class="row">
+            <b>Contact (iCloud)</b>
+            <span>jonashuber61@icloud.com</span>
+          </div>
+          <div class="row">
+            <b>Monetization</b>
+            <span>No paid features or subscriptions yet</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main class="section-grid">
+      <section class="card span-7">
+        <h2>Developer Statement</h2>
+        <p>
+          I am an independent beginner developer, and I am actively working to improve Skyris Horizon with each update.
+          I care about making the app useful and meaningful, not just publishing it.
+        </p>
+        <div class="value-banner">
+          I aim to bring value through clean design, better usability, and ongoing improvements based on feedback.
+        </div>
+      </section>
+
+      <section class="card span-5">
+        <h2>Current Monetization Status</h2>
+        <p>
+          At the moment, Skyris Horizon does <strong>not</strong> include paid features or subscriptions.
+        </p>
+        <p>
+          In the future, paid features or subscription options may be introduced to support development and generate income, while continuing to improve the app for users.
+        </p>
+      </section>
+
+      <section class="card span-6">
+        <h2>What I Focus On</h2>
+        <ul>
+          <li>Building a stable and user-friendly app experience</li>
+          <li>Improving features step by step</li>
+          <li>Maintaining transparent communication</li>
+          <li>Creating long-term value, not short-term hype</li>
+        </ul>
+      </section>
+
+      <section class="card span-6">
+        <h2>Roadmap Direction</h2>
+        <div class="timeline">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <p><strong>Core improvements:</strong> Continue polishing the app and fixing issues.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <p><strong>User value:</strong> Add features that improve usefulness and experience.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <p><strong>Future monetization:</strong> Introduce fair paid options/subscriptions to support ongoing development.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card span-12">
+        <h2>Transparency for App Store Review</h2>
+        <p>
+          This page, along with the Support and Privacy Policy pages, is intended to provide a clear and open picture of the developer account and the app.
+          The information is presented in a straightforward way to help both users and moderators understand the current state of the project.
+        </p>
+        <p>
+          For support questions or review communication, please contact: <strong>jonashuber61@icloud.com</strong>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2026 Skyris Horizon — Marketing Page by Jonas Huber
+    </footer>
+  </div>
+</body>
+</html>
